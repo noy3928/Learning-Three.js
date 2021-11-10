@@ -2,7 +2,7 @@ console.log("Hello Three.js")
 console.log(THREE)
 
 
-//Scene
+// Scene
 const scene = new THREE.Scene()
 
 // Red cube
@@ -32,3 +32,4 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 
 renderer.render(scene, camera)
+
