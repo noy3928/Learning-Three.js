@@ -31,6 +31,8 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
 
+// Clock 
+const clock = new THREE.Clock()
 
 //Animation 
 let time = Date.now()
@@ -38,14 +40,24 @@ let time = Date.now()
 const tick = () => 
 {
 
-    const currentTime = Date.now()
-    const deltaTime = currentTime - time
-    time = currentTime
+    //Clock 
+    const elapsedTime = clock.getElapsedTime()
+    console.log(elapsedTime)
+
+
+    // const currentTime = Date.now()
+    // const deltaTime = currentTime - time
+    // time = currentTime
 
 // Updata ojects
 // mesh.position.x += 0.01
-mesh.position.y += 0.01
-mesh.rotation.y += 0.001 * deltaTime
+// mesh.rotation.y = elapsedTime * Math.PI * 2 // 1초에 한바퀴. 
+// mesh.position.y = Math.sin(elapsedTime) // 위 아래 왔다갔다. 
+// mesh.position.x = Math.cos(elapsedTime)
+
+camera.position.y = Math.sin(elapsedTime)
+camera.position.x = Math.cos(elapsedTime)
+camera.lookAt(mesh.position) // 대상은 멈춰있고, 카메라만 움직이는 동작
 
 //Render
 renderer.render(scene, camera)
