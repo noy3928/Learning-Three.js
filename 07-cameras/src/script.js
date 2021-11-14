@@ -26,7 +26,8 @@ scene.add(mesh)
 // Camera
 // const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 1,4) // 첫번째 인자는 degree를 나타낸다. 수직으로의 높이. 두번째 인자는 카메라에 보여질 화면의 비율이다.
 
-const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 100) // 화면으로부터 계산해서 뭔가를 그린다. 그래서 화면의 비율에 따라서 모양이 달라진다. 
+const aspectRatio = sizes.width / sizes.height
+const camera = new THREE.OrthographicCamera(-1 * aspectRatio, 1 * aspectRatio, 1, -1, 0.1, 100) // 화면으로부터 계산해서 뭔가를 그린다. 그래서 화면의 비율에 따라서 모양이 달라진다. 
 
 camera.position.x = 2
 camera.position.y = 2
