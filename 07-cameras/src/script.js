@@ -10,7 +10,7 @@ const cursor = {
 window.addEventListener('mousemove', (event) => 
 {
     cursor.x = event.clientX / sizes.width - 0.5 // 화면 위에서의 마우스 위치. -0.5를 한 것은, 왼쪽과 오른쪽의 값을 구하기 위한 것이다. 
-    cursor.y = event.clientY / sizes.height - 0.5
+    cursor.y = -(event.clientY / sizes.height - 0.5)
 })
 
 
@@ -63,11 +63,13 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
 
     //update camera
-    camera.position.x =  cursor.x 
-    camera.position.y = - cursor.y
+    camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
+    camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
+    // camera.lookAt(new THREE.Vector3())
+    camera.lookAt(mesh.position)
 
     // Update objects
-    mesh.rotation.y = elapsedTime;
+    // mesh.rotation.y = elapsedTime;
 
     // Render
     renderer.render(scene, camera)
