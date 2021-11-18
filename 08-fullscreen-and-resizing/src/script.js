@@ -41,6 +41,14 @@ window.addEventListener('resize', () =>
     renderer.setPixelRatio(Math.min(window.devicePixelRatio,2))
 })
 
+window.addEventListener('dblclick', () => {
+if(!document.fullscreenElement){
+    console.log('go fullscreen')
+}else{
+    console.log('leave fullscreen')
+}
+})
+
 /**
  * Camera
  */
