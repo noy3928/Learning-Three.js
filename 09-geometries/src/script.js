@@ -14,20 +14,43 @@ const scene = new THREE.Scene()
 // // Object
 // const geometry = new THREE.SphereGeometry(1, 32, 32)
 
-const positionArray = new Float32Array(9)
+const geometry = new THREE.BufferGeometry()
 
-positionArray[0] = 0
-positionArray[1] = 0
-positionArray[2] = 0
+const count = 50
+const positionsArray = new Float32Array(count * 3 * 3)
 
-positionArray[3] = 0
-positionArray[4] = 1
-positionArray[5] = 0
+for(let i = 0; i < count * 3 * 3; i++)
+{
+    positionsArray[i] = Math.random() -0.5
+}
 
-positionArray[6] = 1
-positionArray[7] = 0
-positionArray[8] = 0
+const positionAttribute = new THREE.BufferAttribute(positionsArray, 3)
+geometry.setAttribute('position', positionAttribute)
 
+
+/*
+// const positionArray = new Float32Array([
+//     0,0,0, // First vertext 하나의 버텍스에 3개의 value가 있다. 
+//     0,1,0, // second vertext
+//     1,0,0  // third vertext
+// ])
+
+// positionArray[0] = 0
+// positionArray[1] = 0
+// positionArray[2] = 0
+
+// positionArray[3] = 0
+// positionArray[4] = 1
+// positionArray[5] = 0
+
+// positionArray[6] = 1
+// positionArray[7] = 0
+// positionArray[8] = 0
+
+// const positionAttribute = new THREE.BufferAttribute(positionArray, 3)
+
+// geometry.setAttribute('position', positionAttribute) 
+*/
 
 
 const material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true })
