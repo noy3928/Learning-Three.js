@@ -33,7 +33,9 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
 
 // Clock 
-const clock = new THREE.Clock()
+// const clock = new THREE.Clock()
+
+gasp.to(mesh.position, { duration:1, delay:1, x: 2})
 
 //Animation 
 let time = Date.now()
@@ -42,8 +44,8 @@ const tick = () =>
 {
 
     //Clock 
-    const elapsedTime = clock.getElapsedTime()
-    console.log(elapsedTime)
+    // const elapsedTime = clock.getElapsedTime()
+    // console.log(elapsedTime)
 
 
     // const currentTime = Date.now()
@@ -56,9 +58,9 @@ const tick = () =>
 // mesh.position.y = Math.sin(elapsedTime) // 위 아래 왔다갔다. 
 // mesh.position.x = Math.cos(elapsedTime)
 
-camera.position.y = Math.sin(elapsedTime)
-camera.position.x = Math.cos(elapsedTime)
-camera.lookAt(mesh.position) // 대상은 멈춰있고, 카메라만 움직이는 동작
+// camera.position.y = Math.sin(elapsedTime)
+// camera.position.x = Math.cos(elapsedTime)
+// camera.lookAt(mesh.position) // 대상은 멈춰있고, 카메라만 움직이는 동작
 
 //Render
 renderer.render(scene, camera)

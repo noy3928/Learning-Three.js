@@ -52,8 +52,9 @@ scene.add(camera)
 
 //Controls
 const controls = new OrbitControls(camera, canvas) // 두개의 인자를 가진다. 카메라와 dom엘리먼트
-controls.target.y = 1
-controls.update()
+controls.enableDamping = true  // 뎀핑 효과 . 이것을 적용하기 위해서는 컨트롤을 지속적으로 업데이트 해줘야 한다. 그래서 매 프레임마다 업데이트 하는 코드를 넣어준다. 
+// controls.target.y = 1
+// controls.update()
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -77,6 +78,9 @@ const tick = () =>
 
     // Update objects
     // mesh.rotation.y = elapsedTime;
+
+    // Update Controls
+    controls.update() // 매 프레임마다 컨트롤을 업데이트해줘야 한다. 
 
     // Render
     renderer.render(scene, camera)
